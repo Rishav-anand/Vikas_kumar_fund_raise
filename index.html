@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Support Sonu Sinha - Lung Cancer Treatment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.hero {
+    text-align: center;
+    padding: 20px 0;
+}
+.hero h1 {
+    color: #e63946;
+}
+.section {
+    margin: 30px 0;
+}
+.section h2 {
+    color: #1d3557;
+}
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+.progress {
+    height: 20px;
+    width: 25%;
+    background-color: #2a9d8f;
+}
+.donate-box {
+    background: #f1faee;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.upi {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.supporters {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+}
+.supporters ul {
+    list-style: none;
+    padding: 0;
+}
+.supporters li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+input {
+    padding: 8px;
+    width: 70%;
+    margin-right: 5px;
+}
+button {
+    padding: 8px 15px;
+    background: #2a9d8f;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="hero">
+<h1>Support Sonu Sinha's Fight Against Stage 4 Lung Cancer</h1>
+<p>DOB: 10-10-1965</p>
+<p>Every small contribution can save a life ❤️</p>
+</div>
+
+<div class="section">
+<h2>Our Story</h2>
+<p>
+My uncle, Sonu Sinha, is battling Stage 4 Lung Cancer.
+The treatment costs are extremely high and increasing daily.
+We request your support to help him fight this battle.
+Every contribution matters.
+</p>
+
+<p>
+My uncle, Sonu Sinha, has been diagnosed with Stage 4 Lung Cancer. This has completely shaken our family. He is currently undergoing treatment, and the medical expenses are increasing day by day.
+
+We are doing everything possible to give him the best treatment, but the cost of chemotherapy, medicines, hospital visits, and supportive care has become financially overwhelming.
+
+We humbly request your support during this difficult time. Your contribution — no matter how small — will directly go towards his life-saving treatment.
+</p>
+</div>
+
+<div class="section">
+<h2>Fund raising Progress</h2>
+<p>Target: ₹10,00,000</p>
+<p>Raised: ₹2,50,000</p>
+<div class="progress-bar">
+<div class="progress"></div>
+</div>
+</div>
+
+<div class="section donate-box">
+<h2>Donate Now</h2>
+
+<p>UPI ID:</p>
+<div class="upi">yourupiid@bank</div>
+
+<!-- One Click UPI Button -->
+<br>
+<a 
+href="upi://pay?pa=rishav1998@ybl&pn=Sonu%20Sinha&cu=INR"
+class="btn">
+Donate Instantly via UPI
+</a>
+
+<br><br>
+
+<img src="https://drive.google.com/file/d/1kVbNM1DRo_kx36by2ebt5lnkyclRFObY/view?usp=sharing" width="200">
+
+<p style="font-size:14px; margin-top:10px;">
+(Works on Google Pay, PhonePe, Paytm & other UPI apps)
+</p>
+</div>
+
+<div class="section">
+<h2>Medical Documents</h2>
+<a href="GOOGLE_DRIVE_LINK_1" target="_blank">Doctor Report</a><br>
+<a href="GOOGLE_DRIVE_LINK_2" target="_blank">Medical Bills</a>
+</div>
+
+<div class="section supporters">
+<h2>Supporters ❤️</h2>
+
+<input type="text" id="supporterName" placeholder="Enter your name after donating">
+<button onclick="addSupporter()">Add Name</button>
+
+<ul id="supporterList"></ul>
+</div>
+
+</div>
+
+<script>
+const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfE6bpqKs0R8xn7jlFoqt_qR52k-8TgqhiuXGLs_4NDGGHLOA/formResponse";
+const sheetURL = "https://docs.google.com/spreadsheets/d/1139tCrECW9S2BCy-jvuvVYyHJFZyjpRTMmcunli9FPg/gviz/tq?tqx=out:json";
+const fieldID = "entry.351899757";
+
+function addSupporter() {
+    const name = document.getElementById("supporterName").value;
+    if (name.trim() === "") return;
+
+    fetch(formURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: fieldID + "=" + encodeURIComponent(name)
+    });
+
+    document.getElementById("supporterName").value = "";
+    alert("Thank you for supporting ❤️");
+
+    // Auto refresh supporter list after 1.5 sec
+    setTimeout(loadSupporters, 1500);
+}
+
+function loadSupporters() {
+    fetch(sheetURL)
+    .then(res => res.text())
+    .then(rep => {
+        const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
+        const rows = jsonData.table.rows;
+
+        const list = document.getElementById("supporterList");
+        list.innerHTML = "";
+
+        rows.forEach(row => {
+            const name = row.c[1] ? row.c[1].v : "";
+            if (name) {
+                const li = document.createElement("li");
+                li.textContent = name;
+                list.appendChild(li);
+            }
+        });
+    });
+}
+
+loadSupporters();
+</script>
+
+
+</body>
+</html>
