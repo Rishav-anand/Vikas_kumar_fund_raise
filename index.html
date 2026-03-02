@@ -11,6 +11,28 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f8;
 }
+/* 🔴 Running Banner Fixed */
+.top-banner {
+    background: #e63946;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.top-banner span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 18s linear infinite;
+    font-weight: bold;
+    padding: 12px 0;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
 .container {
     max-width: 900px;
     margin: auto;
@@ -18,68 +40,97 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
 .hero {
     text-align: center;
     padding: 20px 0;
 }
+
 .hero h1 {
     color: #e63946;
 }
+
 .section {
     margin: 30px 0;
 }
+
 .section h2 {
     color: #1d3557;
 }
+
+/* 🟡 Highlight Notice Box */
+.notice-box {
+    background: #fff3cd;
+    border-left: 6px solid #ff9800;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 .progress-bar {
     background-color: #ddd;
     border-radius: 20px;
     overflow: hidden;
     margin: 20px 0;
 }
+
 .progress {
     height: 20px;
     width: 25%;
     background-color: #2a9d8f;
 }
+
 .donate-box {
     background: #f1faee;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
 }
+
 .upi {
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0;
 }
+
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 25px;
     background: #e63946;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 10px;
+    font-weight: bold;
 }
+
+.btn:hover {
+    background: #c62828;
+}
+
 .supporters {
     background: #fafafa;
     padding: 15px;
     border-radius: 10px;
 }
+
 .supporters ul {
     list-style: none;
     padding: 0;
 }
+
 .supporters li {
     padding: 5px 0;
     border-bottom: 1px solid #eee;
 }
+
 input {
     padding: 8px;
     width: 70%;
     margin-right: 5px;
 }
+
 button {
     padding: 8px 15px;
     background: #2a9d8f;
@@ -91,6 +142,14 @@ button {
 </head>
 
 <body>
+
+<!-- 🔴 Running Banner -->
+<div class="top-banner">
+<span>
+Urgent Appeal ⚠ Please consider donating directly using the button below for faster medical support. Every contribution saves a life ❤️
+</span>
+</div>
+
 <div class="container">
 
 <div class="hero">
@@ -99,26 +158,36 @@ button {
 <p>Every small contribution can save a life ❤️</p>
 </div>
 
+<!-- 🟡 Transparency Notice -->
+<div class="section notice-box">
+<strong>Transparency & Direct Donation Notice:</strong><br><br>
+
+This website has been created to allow supporters to donate directly into our personal bank account for faster access to medical funds. This does NOT mean the campaign is fake in any way.
+
+We are also registered on crowdfunding platforms, and all medical documents are being uploaded regularly as proof. You can verify every report and hospital bill in the Medical Documents section below.
+
+We encourage direct UPI payment because third-party platforms deduct extra charges and the withdrawal process takes time. Since the treatment is urgent, direct transfer helps us immediately pay hospital expenses.
+
+Your trust, support, and prayers mean everything to us. ❤️
+</div>
+
 <div class="section">
 <h2>Our Story</h2>
 <p>
-My uncle, Sonu Sinha, is battling Stage 4 Lung Cancer.
-The treatment costs are extremely high and increasing daily.
-We request your support to help him fight this battle.
-Every contribution matters.
+My uncle, Sonu Sinha, has been diagnosed with Stage 4 Lung Cancer. This has completely shaken our family. He is currently undergoing treatment, and the medical expenses are increasing day by day.
 </p>
 
 <p>
-My uncle, Sonu Sinha, has been diagnosed with Stage 4 Lung Cancer. This has completely shaken our family. He is currently undergoing treatment, and the medical expenses are increasing day by day.
-
 We are doing everything possible to give him the best treatment, but the cost of chemotherapy, medicines, hospital visits, and supportive care has become financially overwhelming.
+</p>
 
+<p>
 We humbly request your support during this difficult time. Your contribution — no matter how small — will directly go towards his life-saving treatment.
 </p>
 </div>
 
 <div class="section">
-<h2>Fund raising Progress</h2>
+<h2>Fund Raising Progress</h2>
 <p>Target: ₹10,00,000</p>
 <p>Raised: ₹2,50,000</p>
 <div class="progress-bar">
@@ -130,10 +199,10 @@ We humbly request your support during this difficult time. Your contribution —
 <h2>Donate Now</h2>
 
 <p>UPI ID:</p>
-<div class="upi">yourupiid@bank</div>
+<div class="upi">rishav1998@ybl</div>
 
-<!-- One Click UPI Button -->
 <br>
+
 <a 
 href="upi://pay?pa=rishav1998@ybl&pn=Sonu%20Sinha&cu=INR"
 class="btn">
@@ -142,7 +211,7 @@ Donate Instantly via UPI
 
 <br><br>
 
-<img src="https://drive.google.com/file/d/1kVbNM1DRo_kx36by2ebt5lnkyclRFObY/view?usp=sharing" width="200">
+<img src="YOUR_DIRECT_IMAGE_LINK_HERE" width="200">
 
 <p style="font-size:14px; margin-top:10px;">
 (Works on Google Pay, PhonePe, Paytm & other UPI apps)
@@ -185,7 +254,6 @@ function addSupporter() {
     document.getElementById("supporterName").value = "";
     alert("Thank you for supporting ❤️");
 
-    // Auto refresh supporter list after 1.5 sec
     setTimeout(loadSupporters, 1500);
 }
 
@@ -212,7 +280,6 @@ function loadSupporters() {
 
 loadSupporters();
 </script>
-
 
 </body>
 </html>
