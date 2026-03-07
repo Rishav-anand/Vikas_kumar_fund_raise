@@ -266,6 +266,16 @@ const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfE6bpqKs0R8xn7jlFoqt_
 const sheetURL = "https://docs.google.com/spreadsheets/d/1139tCrECW9S2BCy-jvuvVYyHJFZyjpRTMmcunli9FPg/gviz/tq?tqx=out:json";
 const fieldID = "entry.351899757";
 
+function copyUPI() {
+    const upiID = "rishav1998@ybl";
+    navigator.clipboard.writeText(upiID)
+    .then(() => {
+        alert("UPI ID copied: " + upiID);
+    })
+    .catch(err => {
+        console.error("Failed to copy", err);
+    });
+}
 function addSupporter() {
     const name = document.getElementById("supporterName").value;
     if (name.trim() === "") return;
@@ -309,6 +319,7 @@ loadSupporters();
 
 </body>
 </html>
+
 
 
 
