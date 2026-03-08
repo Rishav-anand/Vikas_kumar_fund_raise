@@ -273,12 +273,14 @@ const fieldID = "entry.351899757";
 
 function copyUPI() {
     const upiID = "rishav1998@ybl";
+
     navigator.clipboard.writeText(upiID)
     .then(() => {
-        alert("UPI ID copied: " + upiID);
+        alert("✅ UPI ID copied successfully!\n\nPlease paste it in your UPI app (Google Pay, PhonePe, Paytm) to complete the donation. ❤️\n\nThank you for supporting.");
     })
     .catch(err => {
         console.error("Failed to copy", err);
+        alert("❌ Unable to copy UPI ID. Please copy it manually: rishav1998@ybl");
     });
 }
 function addSupporter() {
@@ -324,6 +326,7 @@ loadSupporters();
 
 </body>
 </html>
+
 
 
 
